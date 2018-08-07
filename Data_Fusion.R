@@ -8,7 +8,6 @@ library(beanplot)
 library(rstan)
 source("Data_Fusion_Functions.R")
 
-
 # Example 1a: MVN ================================================================
 # Generate synthetic data
 set.seed(20030601)
@@ -45,7 +44,8 @@ plot.true.v.est(m1, pars=c("y1mis", "y2mis"), prefix="Ex1",
 
 # Example 1b: MVN with zero correlations =======================================
 # Generate synthetic data
-set.seed(20030601)Sigma <- matrix(0, nrow=4, ncol=4)
+set.seed(20030601)
+Sigma <- matrix(0, nrow=4, ncol=4)
 diag(Sigma) <- 1
 # Call to Stan to generate posterior draws
 d2 <- data.mvn.split(K1=1, K2=1, Kb=2, N1=100, N2=100, mu=rep(0,4), Sigma=Sigma)
