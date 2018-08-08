@@ -152,7 +152,6 @@ points(z.est[is.na(z.est$y), c(1,3)], col="red")
 abline(h=0, v=0)
 dev.off()
 
-
 Sigma <- matrix(0.9, nrow=4, ncol=4)
 diag(Sigma) <- 1
 d3 <- data.mvp.split(K1=1, K2=1, Kb=2, N1=100, N2=100, mu=rep(0,4), Sigma=Sigma)
