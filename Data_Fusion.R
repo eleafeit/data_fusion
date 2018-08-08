@@ -22,7 +22,7 @@ m1 <- stan(file="Data_Fusion_MVN.stan", data=d1$data,
 summary(m1, par=c("mu"))  
 summary(m1, par=c("tau"))
 summary(m1, par=c("Omega"))
-plot.post.density(m1, pars=c("mu", "tau"), prefix="Ex1",
+plot.post.density(m1, pars=c("mu", "tau"), prefix="./images/Ex1",
                   true=list(d1$true$mu, sqrt(diag(d1$true$Sigma)), 
                             cov2cor(d1$true$Sigma)))
 draws <- As.mcmc.list(m1, pars=c("Omega"))
@@ -39,7 +39,7 @@ plot(density(extract(m1, par=c("y1mis"))$y1mis[,3,]),
      main="Posterior of Unobserved y_1", xlab="y_1")
 dev.off()
 summary(m1, par=c("y"))  # posteriors of observed data place a point mass at the observed value
-plot.true.v.est(m1, pars=c("y1mis", "y2mis"), prefix="Ex1",
+plot.true.v.est(m1, pars=c("y1mis", "y2mis"), prefix="./images/Ex1",
                 true=list(d1$true$y1mis, d1$true$y2mis))
 
 # Example 1b: MVN with zero correlations =======================================
@@ -55,7 +55,7 @@ m2 <- stan(file="Data_Fusion_MVN.stan", data=d2$data,
 summary(m2, par=c("mu"))  
 summary(m2, par=c("tau"))
 summary(m2, par=c("Omega"))
-plot.post.density(m2, pars=c("mu", "tau"), prefix="Ex2",
+plot.post.density(m2, pars=c("mu", "tau"), prefix="./images/Ex2",
                   true=list(d1$true$mu, sqrt(diag(d1$true$Sigma)), 
                             cov2cor(d1$true$Sigma)))
 draws <- As.mcmc.list(m2, pars=c("Omega"))
@@ -65,7 +65,7 @@ beanplot(data.frame(draws[[1]][,c(2:4, 7:8, 12)]),
          main=paste("Posterior Density of Omega", log=""), cex.axis=0.5)
 dev.off()
 # Summaries of posterior draws for missing data
-plot.true.v.est(m2, pars=c("y1mis", "y2mis"), prefix="Ex2",
+plot.true.v.est(m2, pars=c("y1mis", "y2mis"), prefix="./images/Ex2",
                 true=list(d2$true$y1mis, d2$true$y2mis))
 
 # Example 1c: MVN with strong positive correlations ===========================
@@ -81,7 +81,7 @@ m3 <- stan(file="Data_Fusion_MVN.stan", data=d3$data,
 summary(m3, par=c("mu"))  
 summary(m3, par=c("tau"))
 summary(m3, par=c("Omega"))
-plot.post.density(m3, pars=c("mu", "tau"), prefix="Ex3",
+plot.post.density(m3, pars=c("mu", "tau"), prefix="./images/Ex3",
                   true=list(d1$true$mu, sqrt(diag(d1$true$Sigma))))
 draws <- As.mcmc.list(m3, pars=c("Omega"))
 png(filename="./images/Ex3PostOmega.png", width=600, height=400)
@@ -90,7 +90,7 @@ beanplot(data.frame(draws[[1]][,c(2:4, 7:8, 12)]),
          main=paste("Posterior Density of Omega", log=""))
 dev.off()
 # Summaries of posterior draws for missing data
-plot.true.v.est(m3, pars=c("y1mis", "y2mis"), prefix="Ex3",
+plot.true.v.est(m3, pars=c("y1mis", "y2mis"), prefix="./images/Ex3",
                 true=list(d3$true$y1mis, d3$true$y2mis))
 
 # Example 2: MVP =================================================================
@@ -104,7 +104,7 @@ m1 <- stan(file="Data_Fusion_MVP.stan", data=d1$data,
            iter=10000, warmup=2000, chains=1, seed=35)
 # Summaries of posteriors of population-level parameters
 summary(m1, par=c("mu", "Omega"))
-plot.post.density(m1, pars=c("mu"), prefix="Ex1MVP", true=list(d1$true$mu))
+plot.post.density(m1, pars=c("mu"), prefix="./images/Ex1MVP", true=list(d1$true$mu))
 png(filename="./images/Ex1MVPPostOmega.png", width=600, height=400)
 draws <- As.mcmc.list(m1, pars=c("Omega"))
 beanplot(data.frame(draws[[1]][,c(2:4, 7:8, 12)]), 
@@ -133,7 +133,7 @@ d2 <- data.mvp.split(K1=1, K2=1, Kb=2, N1=100, N2=100, mu=rep(0,4), Sigma=Sigma)
 m2 <- stan(file="Data_Fusion_MVP.stan", data=d2$data, 
            iter=10000, warmup=2000, chains=1, seed=35)
 print(m2, par=c("mu", "Omega"))
-plot.post.density(m2, pars=c("mu"), prefix="Ex2MVP", true=list(d2$true$mu))
+plot.post.density(m2, pars=c("mu"), prefix="./images/Ex2MVP", true=list(d2$true$mu))
 png(filename="./images/Ex2MVPPostOmega.png", width=600, height=400)
 draws <- As.mcmc.list(m2, pars=c("Omega"))
 beanplot(data.frame(draws[[1]][,c(2:4, 7:8, 12)]), 
@@ -158,7 +158,7 @@ d3 <- data.mvp.split(K1=1, K2=1, Kb=2, N1=100, N2=100, mu=rep(0,4), Sigma=Sigma)
 m3 <- stan(file="Data_Fusion_MVP.stan", data=d3$data, 
            iter=10000, warmup=2000, chains=1, seed=12)
 print(m3, par=c("mu", "Omega"))
-plot.post.density(m3, pars=c("mu"), prefix="Ex3MVP", true=list(d2$true$mu))
+plot.post.density(m3, pars=c("mu"), prefix="./images/Ex3MVP", true=list(d2$true$mu))
 png(filename="./images/Ex3MVPPostOmega.png", width=600, height=400)
 draws <- As.mcmc.list(m3, pars=c("Omega"))
 beanplot(data.frame(draws[[1]][,c(2:4, 7:8, 12)]), 
