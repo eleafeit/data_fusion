@@ -7,4 +7,4 @@ This chapter introduces readers to applications of data fusion in marketing from
 
 
 ## Running the code
-To run the examples from the chapter, first install the [R language](https://www.r-project.org/) and [RStan](https://github.com/stan-dev/rstan/wiki/RStan-Getting-Started), which is the R interface to Stan. [RStudio](www.rstudio.com) is also recommended. After those are installed, you should be able to open [`Data_Fusion.R'](https://github.com/eleafeit/data_fusion/blob/master/Data_Fusion.R) and run the examples in the chapter. 
+To run the examples from the chapter, first install the [R language](https://www.r-project.org/) and [RStan](https://github.com/stan-dev/rstan/wiki/RStan-Getting-Started), which is the R interface to Stan. [RStudio](www.rstudio.com) is also recommended. After those are installed, you should be able to open [`Data_Fusion.R'](https://github.com/eleafeit/data_fusion/blob/master/Data_Fusion.R) in R or RStudio and run the examples in the chapter. 
