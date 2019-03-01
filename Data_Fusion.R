@@ -107,6 +107,7 @@ summary(m1, par=c("mu", "Omega"))
 plot.post.density(m1, pars=c("mu"), prefix="./images/Ex1MVP", true=list(d1$true$mu))
 png(filename="./images/Ex1MVPPostOmega.png", width=600, height=400)
 draws <- As.mcmc.list(m1, pars=c("Omega"))
+par(mar=c(5,6,4,1)+.1)
 beanplot(data.frame(draws[[1]][,c(2:4, 7:8, 12)]), 
          horizontal=TRUE, las=1, what=c(0, 1, 1, 0), side="second",
          main=paste("Posterior Density of Omega", log=""))
